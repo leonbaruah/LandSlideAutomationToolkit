@@ -9,7 +9,7 @@ from raster_upsampler import RasterUpsampler
 from LandslidePopulationAnalysis import LandslidePopulationAnalysis
 
 # Function to set the working dir to the project dir
-def set_working_directory(target_dir_name="GeospatialProject"):
+def set_working_directory(target_dir_name="Landslide-Exposure-GeospatialProject"):
     # Get the current script's directory
     current_script_path = Path(__file__).resolve().parent
 
