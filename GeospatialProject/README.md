@@ -11,7 +11,7 @@ This project is designed to analyse geospatial data related to landslide risk an
 ### Prerequisites
 <!-- List of prerequisites like software, libraries, and tools with their versions -->
 - Python version 3.x
-- Required libraries: `rasterio`, `geopandas`, `numpy`, `pandas`,`GDAL`
+- Required libraries: `rasterio`, `geopandas`, `numpy`, `pandas`,`gdal`
 - Landslide risk index global raster : preferable stored data/input
 - Shapefile with adm level boundaries : preferable stored data/input
 - Population raster dataset : preferable stored data/input
