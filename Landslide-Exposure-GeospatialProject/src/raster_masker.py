@@ -11,15 +11,6 @@ class RasterMasker:
         self.shp_path = shp_path # Path to the shapefile 
         self.output_path = output_path # Path to where the masked_raster will be saved
 
-    @staticmethod
-    def get_features(gdf):
-        """Convert geodataframe to JSON features."""
-        # This method converts a GDF to a list of geometry features in json format
-        # GDF: loaded from a shapefile
-        # The method uses list to iterate over each feature in the gdf
-        # Converts to json format and extracts the geometry part of each feature
-        return [json.loads(gdf.to_json())['features'][i]['geometry'] for i in range(len(gdf))]
-
     def mask_raster_with_shp(self):
         """Mask raster with Shapefile boundaries and save as new TIFF."""
         # This method performs the main functionality of masking a raster dataset using a shp
@@ -27,7 +18,7 @@ class RasterMasker:
             gdf = gpd.read_file(self.shp_path) # To load shp as gdf
             with rasterio.open(self.raster_path) as src:
                 # Open input
-                geoms = self.get_features(gdf) # Convert gdf to json features
+                geoms = gdf['geometry'].tolist() # Convert gdf to json features
                 out_image, out_transform = mask(src, geoms, crop=True) # Mask application
                 out_meta = src.meta.copy() # Copy metadata of the source raster
             
